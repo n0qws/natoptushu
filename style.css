@@ -22,11 +22,16 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    /* Защита от вылезания текста */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h1, h2, h3 {
     font-family: var(--font-heading);
     text-transform: uppercase;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 a {
@@ -61,17 +66,18 @@ a {
 .hero-content {
     position: relative;
     z-index: 2;
+    max-width: 100%;
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(2.5rem, 10vw, 8rem); /* Уменьшен минимум для мобильных */
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 2px; /* Уменьшен отступ между буквами */
     margin-bottom: 1rem;
     text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
     animation: glow 3s infinite alternate;
-    cursor: pointer; /* Курсор-рука, чтобы было понятно, что можно кликать */
-    user-select: none; /* Чтобы текст не выделялся при тройном клике */
+    cursor: pointer;
+    user-select: none;
 }
 
 @keyframes glow {
@@ -80,15 +86,15 @@ a {
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
     margin-bottom: 2rem;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .btn {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1rem 2rem;
     border: 2px solid var(--accent-green);
     color: var(--accent-green);
     font-family: var(--font-heading);
@@ -97,7 +103,7 @@ a {
     transition: all 0.3s ease;
     cursor: pointer;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
     background: transparent;
 }
@@ -111,16 +117,17 @@ a {
 
 /* --- ОБЩИЕ СЕКЦИИ --- */
 .section {
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem; /* Уменьшены отступы для мобильных */
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: var(--text-main);
+    word-wrap: break-word;
 }
 
 .section-title span {
@@ -130,10 +137,10 @@ a {
 /* --- ИСТОРИЯ --- */
 .history-text {
     background: var(--bg-card);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 20px;
     border-left: 5px solid var(--accent-purple);
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #d1d1d1;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
@@ -150,8 +157,8 @@ a {
 /* --- КОМАНДА --- */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .team-card {
@@ -171,7 +178,7 @@ a {
 
 .team-card img {
     width: 100%;
-    height: 350px;
+    height: 300px;
     object-fit: cover;
     display: block;
     filter: grayscale(20%);
@@ -183,18 +190,18 @@ a {
 }
 
 .team-info {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
 }
 
 .team-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
     color: var(--text-main);
 }
 
 .team-info p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -204,14 +211,14 @@ a {
     text-align: center;
     background: var(--bg-card);
     border-radius: 20px;
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
     border: 1px dashed var(--accent-green);
 }
 
 .quote-display {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-style: italic;
-    min-height: 100px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,6 +226,9 @@ a {
     color: #fff;
     font-family: var(--font-body);
     transition: opacity 0.2s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 0 0.5rem;
 }
 
 /* --- МУЗЫКА --- */
@@ -237,30 +247,22 @@ a {
 /* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 3rem;
+    padding: 2rem 1.5rem;
     border-top: 1px solid #333;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 footer a {
     color: var(--accent-green);
 }
 
-/* --- АДАПТИВНОСТЬ --- */
-@media (max-width: 768px) {
-    .section { padding: 4rem 1rem; }
-    .history-text { padding: 1.5rem; }
-    .team-card img { height: 280px; }
-    .hero h1 { font-size: 3rem; }
-}
-
 /* --- ПАСХАЛКА: ЛЕТАЮЩИЕ M&M's --- */
 .flying-mnm {
     position: fixed;
     z-index: 9999;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -268,8 +270,8 @@ footer a {
     font-family: 'Unbounded', sans-serif;
     font-weight: 900;
     color: #121212;
-    font-size: 22px;
-    pointer-events: none; /* Чтобы клики проходили сквозь них */
+    font-size: 20px;
+    pointer-events: none;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     animation: fly 3s linear forwards;
 }
@@ -286,5 +288,72 @@ footer a {
     100% {
         transform: translateY(100vh) rotate(720deg);
         opacity: 0;
+    }
+}
+
+/* ========================================= */
+/* --- АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .history-text {
+        padding: 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr; /* Одна колонка на телефоне */
+        gap: 1.5rem;
+    }
+
+    .team-card img {
+        height: 250px;
+    }
+
+    .quote-display {
+        font-size: 1rem;
+        min-height: 70px;
+    }
+
+    .quote-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Для очень узких экранов (до 400px) */
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .team-info h3 {
+        font-size: 1rem;
     }
 }

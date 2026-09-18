@@ -44,7 +44,7 @@ a {
     align-items: center;
     text-align: center;
     padding: 2rem;
-    background-image: url('M&M баскетбол.jpg'); /* Имя файла для фона */
+    background-image: url('M&M баскетбол.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -70,6 +70,8 @@ a {
     margin-bottom: 1rem;
     text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
     animation: glow 3s infinite alternate;
+    cursor: pointer; /* Курсор-рука, чтобы было понятно, что можно кликать */
+    user-select: none; /* Чтобы текст не выделялся при тройном клике */
 }
 
 @keyframes glow {
@@ -251,4 +253,38 @@ footer a {
     .history-text { padding: 1.5rem; }
     .team-card img { height: 280px; }
     .hero h1 { font-size: 3rem; }
+}
+
+/* --- ПАСХАЛКА: ЛЕТАЮЩИЕ M&M's --- */
+.flying-mnm {
+    position: fixed;
+    z-index: 9999;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    color: #121212;
+    font-size: 22px;
+    pointer-events: none; /* Чтобы клики проходили сквозь них */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: fly 3s linear forwards;
+}
+
+.flying-mnm::after {
+    content: 'm';
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
 }
